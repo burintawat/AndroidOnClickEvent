@@ -1,11 +1,13 @@
 package com.example.navadroid.androidonclickevent;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 // TODO: View.OnClickListener as class attribute
@@ -13,6 +15,8 @@ public class Option4Activity extends AppCompatActivity {
 
     private EditText etInput;
     private TextView tvOutput;
+    private ImageView ivNext;
+    private ImageView ivBack;
     private View.OnClickListener onClickListener;
 
     @Override
@@ -27,12 +31,16 @@ public class Option4Activity extends AppCompatActivity {
     private void bindView(){
         etInput = (EditText) findViewById(R.id.et_input_4);
         tvOutput = (TextView) findViewById(R.id.tv_body_4);
+        ivNext = (ImageView) findViewById(R.id.iv_next);
+        ivBack = (ImageView) findViewById(R.id.iv_back);
     }
 
     private void initView(){
         initOnClickListener();
         // To register click event to view
         findViewById(R.id.btn_process_4).setOnClickListener(onClickListener);
+        findViewById(R.id.iv_next).setOnClickListener(onClickListener);
+        findViewById(R.id.iv_back).setOnClickListener(onClickListener);
     }
 
     // You don't have to bind any functions to "android:onClick" in layout XML file.
@@ -43,6 +51,15 @@ public class Option4Activity extends AppCompatActivity {
                 switch (v.getId()) {
                     case R.id.btn_process_4:
                         greet();
+                        break;
+
+                    case R.id.iv_next:
+                        Intent i = new Intent(Option4Activity.this, Option5Activity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.iv_back:
+                        finish();
                         break;
                 }
                 hideKeyboardInput(v);

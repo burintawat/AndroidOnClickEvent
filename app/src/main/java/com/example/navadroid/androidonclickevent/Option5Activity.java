@@ -1,11 +1,13 @@
 package com.example.navadroid.androidonclickevent;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 // TODO: View.OnClickListener as inner class
@@ -13,6 +15,8 @@ public class Option5Activity extends AppCompatActivity {
 
     private EditText etInput;
     private TextView tvOutput;
+    private ImageView ivNext;
+    private ImageView ivBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +30,15 @@ public class Option5Activity extends AppCompatActivity {
     private void bindView(){
         etInput = (EditText) findViewById(R.id.et_input_5);
         tvOutput = (TextView) findViewById(R.id.tv_body_5);
+        ivNext = (ImageView) findViewById(R.id.iv_next);
+        ivBack = (ImageView) findViewById(R.id.iv_back);
     }
 
     private void initView(){
         // To register click event to view
         findViewById(R.id.btn_process_5).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.iv_next).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.iv_back).setOnClickListener(new InnerOnClickListener());
     }
 
     // A class that handles all of click events
@@ -41,6 +49,10 @@ public class Option5Activity extends AppCompatActivity {
             switch (v.getId()) {
                 case R.id.btn_process_5:
                     greet();
+                    break;
+
+                case R.id.iv_back:
+                    finish();
                     break;
             }
             hideKeyboardInput(v);
